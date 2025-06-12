@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr
-from typing import Optional
+from typing import Optional, List
 from enum import Enum
 
 class RoleEnum(str, Enum):
@@ -20,3 +20,18 @@ class UserLogin(BaseModel):
 class TokenRequest(BaseModel):
     refresh_token: str
     
+
+
+class ProfileUpdate(BaseModel):
+    name: Optional[str]
+    phone: Optional[str]
+    address: Optional[str]
+
+class UserProfileResponse(BaseModel):
+    _id: str
+    email: EmailStr
+    role: str
+    name: Optional[str]
+    phone: Optional[str]
+    address: Optional[str]
+    kyc: Optional[dict]
